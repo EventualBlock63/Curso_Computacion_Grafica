@@ -1,6 +1,6 @@
 /*Práctica 4
 Fernando Martínez
-20 de Febrero 2025
+26 de Febrero 2025
 318273745
 */
 
@@ -88,91 +88,181 @@ int main() {
 
 	// use with Perspective Projection
 	float vertices[] = {
-		-0.5f, -0.5f, 0.5f, 0.5843f, 0.7647f, 0.1607f,//Front
+		-0.5f, -0.5f, 0.5f, 0.5843f, 0.7647f, 0.1607f,//Front 0 CABEZA Y MANOS
 		0.5f, -0.5f, 0.5f,  0.5843f, 0.7647f, 0.1607f,
 		0.5f,  0.5f, 0.5f,  0.5843f, 0.7647f, 0.1607f,
 		0.5f,  0.5f, 0.5f,  0.5843f, 0.7647f, 0.1607f,
 		-0.5f,  0.5f, 0.5f, 0.5843f, 0.7647f, 0.1607f,
 		-0.5f, -0.5f, 0.5f, 0.5843f, 0.7647f, 0.1607f,
 
-		-0.5f, -0.5f,-0.5f, 0.0f, 1.0f,0.0f,//Back
-		 0.5f, -0.5f,-0.5f, 0.0f, 1.0f,0.0f,
-		 0.5f,  0.5f,-0.5f, 0.0f, 1.0f,0.0f,
-		 0.5f,  0.5f,-0.5f, 0.0f, 1.0f,0.0f,
-		-0.5f,  0.5f,-0.5f, 0.0f, 1.0f,0.0f,
-		-0.5f, -0.5f,-0.5f, 0.0f, 1.0f,0.0f,
+		-0.5f, -0.5f,-0.5f, 0.5843f, 0.7647f, 0.1607f,//Back
+		 0.5f, -0.5f,-0.5f, 0.5843f, 0.7647f, 0.1607f,
+		 0.5f,  0.5f,-0.5f, 0.5843f, 0.7647f, 0.1607f,
+		 0.5f,  0.5f,-0.5f, 0.5843f, 0.7647f, 0.1607f,
+		-0.5f,  0.5f,-0.5f, 0.5843f, 0.7647f, 0.1607f,
+		-0.5f, -0.5f,-0.5f, 0.5843f, 0.7647f, 0.1607f,
 
-		 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,1.0f,
-		 0.5f, -0.5f, -0.5f,  0.0f, 0.0f,1.0f,
-		 0.5f,  0.5f, -0.5f,  0.0f, 0.0f,1.0f,
-		 0.5f,  0.5f, -0.5f,  0.0f, 0.0f,1.0f,
-		 0.5f,  0.5f,  0.5f,  0.0f, 0.0f,1.0f,
-		 0.5f,  -0.5f, 0.5f, 0.0f, 0.0f,1.0f,
+		 0.5f, -0.5f,  0.5f,  0.5843f, 0.7647f, 0.1607f,
+		 0.5f, -0.5f, -0.5f,  0.5843f, 0.7647f, 0.1607f,
+		 0.5f,  0.5f, -0.5f,  0.5843f, 0.7647f, 0.1607f,
+		 0.5f,  0.5f, -0.5f,  0.5843f, 0.7647f, 0.1607f,
+		 0.5f,  0.5f,  0.5f,  0.5843f, 0.7647f, 0.1607f,
+		 0.5f,  -0.5f, 0.5f,  0.5843f, 0.7647f, 0.1607f,
 
-		-0.5f,  0.5f,  0.5f,  1.0f, 1.0f,0.0f,
-		-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,0.0f,
-		-0.5f, -0.5f, -0.5f,  1.0f, 1.0f,0.0f,
-		-0.5f, -0.5f, -0.5f,  1.0f, 1.0f,0.0f,
-		-0.5f, -0.5f,  0.5f,  1.0f, 1.0f,0.0f,
-		-0.5f,  0.5f,  0.5f,  1.0f, 1.0f,0.0f,
+		-0.5f,  0.5f,  0.5f,  0.5843f, 0.7647f, 0.1607f,
+		-0.5f,  0.5f, -0.5f,  0.5843f, 0.7647f, 0.1607f,
+		-0.5f, -0.5f, -0.5f,  0.5843f, 0.7647f, 0.1607f,
+		-0.5f, -0.5f, -0.5f,  0.5843f, 0.7647f, 0.1607f,
+		-0.5f, -0.5f,  0.5f,  0.5843f, 0.7647f, 0.1607f,
+		-0.5f,  0.5f,  0.5f,  0.5843f, 0.7647f, 0.1607f,
 
-		-0.5f, -0.5f, -0.5f, 0.0f, 1.0f,1.0f,
-		0.5f, -0.5f, -0.5f,  0.0f, 1.0f,1.0f,
-		0.5f, -0.5f,  0.5f,  0.0f, 1.0f,1.0f,
-		0.5f, -0.5f,  0.5f,  0.0f, 1.0f,1.0f,
-		-0.5f, -0.5f,  0.5f, 0.0f, 1.0f,1.0f,
-		-0.5f, -0.5f, -0.5f, 0.0f, 1.0f,1.0f,
+		-0.5f, -0.5f, -0.5f, 0.5843f, 0.7647f, 0.1607f,
+		0.5f, -0.5f, -0.5f,  0.5843f, 0.7647f, 0.1607f,
+		0.5f, -0.5f,  0.5f,  0.5843f, 0.7647f, 0.1607f,
+		0.5f, -0.5f,  0.5f,  0.5843f, 0.7647f, 0.1607f,
+		-0.5f, -0.5f,  0.5f, 0.5843f, 0.7647f, 0.1607f,
+		-0.5f, -0.5f, -0.5f, 0.5843f, 0.7647f, 0.1607f,
 
-		-0.5f,  0.5f, -0.5f, 1.0f, 0.2f,0.5f,
-		0.5f,  0.5f, -0.5f,  1.0f, 0.2f,0.5f,
-		0.5f,  0.5f,  0.5f,  1.0f, 0.2f,0.5f,
-		0.5f,  0.5f,  0.5f,  1.0f, 0.2f,0.5f,
-		-0.5f,  0.5f,  0.5f, 1.0f, 0.2f,0.5f,
-		-0.5f,  0.5f, -0.5f, 1.0f, 0.2f,0.5f,
+		-0.5f,  0.5f, -0.5f, 0.5843f, 0.7647f, 0.1607f,
+		0.5f,  0.5f, -0.5f,  0.5843f, 0.7647f, 0.1607f,
+		0.5f,  0.5f,  0.5f,  0.5843f, 0.7647f, 0.1607f,
+		0.5f,  0.5f,  0.5f,  0.5843f, 0.7647f, 0.1607f,
+		-0.5f,  0.5f,  0.5f, 0.5843f, 0.7647f, 0.1607f,
+		-0.5f,  0.5f, -0.5f, 0.5843f, 0.7647f, 0.1607f,
 
 		//--------------------------------------------------------------------------------------------
 
-		-0.5f, -0.5f, 0.5f, 1.0f, 1.0f, 1.0f,//Front
+		-0.5f, -0.5f, 0.5f, 1.0f, 1.0f, 1.0f,//Front 36 OJOS
 		0.5f, -0.5f, 0.5f,  1.0f, 1.0f, 1.0f,
 		0.5f,  0.5f, 0.5f,  1.0f, 1.0f, 1.0f,
 		0.5f,  0.5f, 0.5f,  1.0f, 1.0f, 1.0f,
 		-0.5f,  0.5f, 0.5f, 1.0f, 1.0f, 1.0f,
 		-0.5f, -0.5f, 0.5f, 1.0f, 1.0f, 1.0f,
 
-		-0.5f, -0.5f,-0.5f, 0.0f, 1.0f,0.0f,//Back
-		 0.5f, -0.5f,-0.5f, 0.0f, 1.0f,0.0f,
-		 0.5f,  0.5f,-0.5f, 0.0f, 1.0f,0.0f,
-		 0.5f,  0.5f,-0.5f, 0.0f, 1.0f,0.0f,
-		-0.5f,  0.5f,-0.5f, 0.0f, 1.0f,0.0f,
-		-0.5f, -0.5f,-0.5f, 0.0f, 1.0f,0.0f,
+		-0.5f, -0.5f,-0.5f, 1.0f, 1.0f, 1.0f,//Back
+		 0.5f, -0.5f,-0.5f, 1.0f, 1.0f, 1.0f,
+		 0.5f,  0.5f,-0.5f, 1.0f, 1.0f, 1.0f,
+		 0.5f,  0.5f,-0.5f, 1.0f, 1.0f, 1.0f,
+		-0.5f,  0.5f,-0.5f, 1.0f, 1.0f, 1.0f,
+		-0.5f, -0.5f,-0.5f, 1.0f, 1.0f, 1.0f,
 
-		 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,1.0f,
-		 0.5f, -0.5f, -0.5f,  0.0f, 0.0f,1.0f,
-		 0.5f,  0.5f, -0.5f,  0.0f, 0.0f,1.0f,
-		 0.5f,  0.5f, -0.5f,  0.0f, 0.0f,1.0f,
-		 0.5f,  0.5f,  0.5f,  0.0f, 0.0f,1.0f,
-		 0.5f,  -0.5f, 0.5f, 0.0f, 0.0f,1.0f,
+		 0.5f, -0.5f,  0.5f,  1.0f, 1.0f, 1.0f,
+		 0.5f, -0.5f, -0.5f,  1.0f, 1.0f, 1.0f,
+		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f, 1.0f,
+		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f, 1.0f,
+		 0.5f,  0.5f,  0.5f,  1.0f, 1.0f, 1.0f,
+		 0.5f,  -0.5f, 0.5f, 1.0f, 1.0f, 1.0f,
 
-		-0.5f,  0.5f,  0.5f,  1.0f, 1.0f,0.0f,
-		-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,0.0f,
-		-0.5f, -0.5f, -0.5f,  1.0f, 1.0f,0.0f,
-		-0.5f, -0.5f, -0.5f,  1.0f, 1.0f,0.0f,
-		-0.5f, -0.5f,  0.5f,  1.0f, 1.0f,0.0f,
-		-0.5f,  0.5f,  0.5f,  1.0f, 1.0f,0.0f,
+		-0.5f,  0.5f,  0.5f,  1.0f, 1.0f, 1.0f,
+		-0.5f,  0.5f, -0.5f,  1.0f, 1.0f, 1.0f,
+		-0.5f, -0.5f, -0.5f,  1.0f, 1.0f, 1.0f,
+		-0.5f, -0.5f, -0.5f,  1.0f, 1.0f, 1.0f,
+		-0.5f, -0.5f,  0.5f,  1.0f, 1.0f, 1.0f,
+		-0.5f,  0.5f,  0.5f,  1.0f, 1.0f, 1.0f,
 
-		-0.5f, -0.5f, -0.5f, 0.0f, 1.0f,1.0f,
-		0.5f, -0.5f, -0.5f,  0.0f, 1.0f,1.0f,
-		0.5f, -0.5f,  0.5f,  0.0f, 1.0f,1.0f,
-		0.5f, -0.5f,  0.5f,  0.0f, 1.0f,1.0f,
-		-0.5f, -0.5f,  0.5f, 0.0f, 1.0f,1.0f,
-		-0.5f, -0.5f, -0.5f, 0.0f, 1.0f,1.0f,
+		-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f,
+		0.5f, -0.5f, -0.5f,  1.0f, 1.0f, 1.0f,
+		0.5f, -0.5f,  0.5f,  1.0f, 1.0f, 1.0f,
+		0.5f, -0.5f,  0.5f,  1.0f, 1.0f, 1.0f,
+		-0.5f, -0.5f,  0.5f, 1.0f, 1.0f, 1.0f,
+		-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f,
 
-		-0.5f,  0.5f, -0.5f, 1.0f, 0.2f,0.5f,
-		0.5f,  0.5f, -0.5f,  1.0f, 0.2f,0.5f,
-		0.5f,  0.5f,  0.5f,  1.0f, 0.2f,0.5f,
-		0.5f,  0.5f,  0.5f,  1.0f, 0.2f,0.5f,
-		-0.5f,  0.5f,  0.5f, 1.0f, 0.2f,0.5f,
-		-0.5f,  0.5f, -0.5f, 1.0f, 0.2f,0.5f,
+		-0.5f,  0.5f, -0.5f, 1.0f, 1.0f, 1.0f,
+		0.5f,  0.5f, -0.5f,  1.0f, 1.0f, 1.0f,
+		0.5f,  0.5f,  0.5f,  1.0f, 1.0f, 1.0f,
+		0.5f,  0.5f,  0.5f,  1.0f, 1.0f, 1.0f,
+		-0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f,
+		-0.5f,  0.5f, -0.5f, 1.0f, 1.0f, 1.0f,
+
+
+		//--------------------------------------------------------------------------------------------
+
+		-0.5f, -0.5f, 0.5f, 0.4509f, 0.3176f,0.1294f,//Front 72 PIERNAS
+		0.5f, -0.5f, 0.5f,  0.4509f, 0.3176f,0.1294f,
+		0.5f,  0.5f, 0.5f,  0.4509f, 0.3176f,0.1294f,
+		0.5f,  0.5f, 0.5f,  0.4509f, 0.3176f,0.1294f,
+		-0.5f,  0.5f, 0.5f, 0.4509f, 0.3176f,0.1294f,
+		-0.5f, -0.5f, 0.5f, 0.4509f, 0.3176f,0.1294f,
+
+		-0.5f, -0.5f,-0.5f, 0.4509f, 0.3176f,0.1294f,//Back
+		 0.5f, -0.5f,-0.5f, 0.4509f, 0.3176f,0.1294f,
+		 0.5f,  0.5f,-0.5f, 0.4509f, 0.3176f,0.1294f,
+		 0.5f,  0.5f,-0.5f, 0.4509f, 0.3176f,0.1294f,
+		-0.5f,  0.5f,-0.5f, 0.4509f, 0.3176f, 0.1294f,
+		-0.5f, -0.5f,-0.5f, 0.4509f, 0.3176f, 0.1294f,
+
+		 0.5f, -0.5f,  0.5f, 0.4509f, 0.3176f, 0.1294f,
+		 0.5f, -0.5f, -0.5f, 0.4509f, 0.3176f, 0.1294f,
+		 0.5f,  0.5f, -0.5f, 0.4509f, 0.3176f, 0.1294f,
+		 0.5f,  0.5f, -0.5f, 0.4509f, 0.3176f, 0.1294f,
+		 0.5f,  0.5f,  0.5f, 0.4509f, 0.3176f, 0.1294f,
+		 0.5f,  -0.5f, 0.5f, 0.4509f, 0.3176f, 0.1294f,
+
+		-0.5f,  0.5f,  0.5f, 0.4509f, 0.3176f, 0.1294f,
+		-0.5f,  0.5f, -0.5f, 0.4509f, 0.3176f, 0.1294f,
+		-0.5f, -0.5f, -0.5f, 0.4509f, 0.3176f, 0.1294f,
+		-0.5f, -0.5f, -0.5f, 0.4509f, 0.3176f, 0.1294f,
+		-0.5f, -0.5f,  0.5f, 0.4509f, 0.3176f, 0.1294f,
+		-0.5f,  0.5f,  0.5f, 0.4509f, 0.3176f, 0.1294f,
+
+		-0.5f, -0.5f, -0.5f, 0.4509f, 0.3176f, 0.1294f,
+		0.5f, -0.5f, -0.5f, 0.4509f, 0.3176f, 0.1294f,
+		0.5f, -0.5f,  0.5f, 0.4509f, 0.3176f, 0.1294f,
+		0.5f, -0.5f,  0.5f, 0.4509f, 0.3176f, 0.1294f,
+		-0.5f, -0.5f,  0.5f, 0.4509f, 0.3176f, 0.1294f,
+		-0.5f, -0.5f, -0.5f, 0.4509f, 0.3176f, 0.1294f,
+
+		-0.5f,  0.5f, -0.5f, 0.4509f, 0.3176f, 0.1294f,
+		0.5f,  0.5f, -0.5f, 0.4509f, 0.3176f, 0.1294f,
+		0.5f,  0.5f,  0.5f, 0.4509f, 0.3176f, 0.1294f,
+		0.5f,  0.5f,  0.5f, 0.4509f, 0.3176f, 0.1294f,
+		-0.5f,  0.5f,  0.5f, 0.4509f, 0.3176f, 0.1294f,
+		-0.5f,  0.5f, -0.5f, 0.4509f, 0.3176f, 0.1294f,
+
+
+		//--------------------------------------------------------------------------------------------
+
+			-0.5f, -0.5f, 0.5f, 0.8196f, 0.7490f, 0.6509f,//Front 108 TORSO Y BRAZOS
+			0.5f, -0.5f, 0.5f, 0.8196f, 0.7490f, 0.6509f,
+			0.5f, 0.5f, 0.5f, 0.8196f, 0.7490f, 0.6509f,
+			0.5f, 0.5f, 0.5f, 0.8196f, 0.7490f, 0.6509f,
+			-0.5f, 0.5f, 0.5f, 0.8196f, 0.7490f, 0.6509f,
+			-0.5f, -0.5f, 0.5f, 0.8196f, 0.7490f, 0.6509f,
+
+			-0.5f, -0.5f, -0.5f, 0.8196f, 0.7490f, 0.6509f,//Back
+			0.5f, -0.5f, -0.5f, 0.8196f, 0.7490f, 0.6509f,
+			0.5f, 0.5f, -0.5f, 0.8196f, 0.7490f, 0.6509f,
+			0.5f, 0.5f, -0.5f, 0.8196f, 0.7490f, 0.6509f,
+			-0.5f, 0.5f, -0.5f, 0.8196f, 0.7490f, 0.6509f,
+			-0.5f, -0.5f, -0.5f, 0.8196f, 0.7490f, 0.6509f,
+
+			0.5f, -0.5f, 0.5f, 0.8196f, 0.7490f, 0.6509f,
+			0.5f, -0.5f, -0.5f, 0.8196f, 0.7490f, 0.6509f,
+			0.5f, 0.5f, -0.5f, 0.8196f, 0.7490f, 0.6509f,
+			0.5f, 0.5f, -0.5f, 0.8196f, 0.7490f, 0.6509f,
+			0.5f, 0.5f, 0.5f, 0.8196f, 0.7490f, 0.6509f,
+			0.5f, -0.5f, 0.5f, 0.8196f, 0.7490f, 0.6509f,
+
+			-0.5f, 0.5f, 0.5f, 0.8196f, 0.7490f, 0.6509f,
+			-0.5f, 0.5f, -0.5f, 0.8196f, 0.7490f, 0.6509f,
+			-0.5f, -0.5f, -0.5f, 0.8196f, 0.7490f, 0.6509f,
+			-0.5f, -0.5f, -0.5f, 0.8196f, 0.7490f, 0.6509f,
+			-0.5f, -0.5f, 0.5f, 0.8196f, 0.7490f, 0.6509f,
+			-0.5f, 0.5f, 0.5f, 0.8196f, 0.7490f, 0.6509f,
+
+			-0.5f, -0.5f, -0.5f, 0.8196f, 0.7490f, 0.6509f,
+			0.5f, -0.5f, -0.5f, 0.8196f, 0.7490f, 0.6509f,
+			0.5f, -0.5f, 0.5f, 0.8196f, 0.7490f, 0.6509f,
+			0.5f, -0.5f, 0.5f, 0.8196f, 0.7490f, 0.6509f,
+			-0.5f, -0.5f, 0.5f, 0.8196f, 0.7490f, 0.6509f,
+			-0.5f, -0.5f, -0.5f, 0.8196f, 0.7490f, 0.6509f,
+
+			-0.5f, 0.5f, -0.5f, 0.8196f, 0.7490f, 0.6509f,
+			0.5f, 0.5f, -0.5f, 0.8196f, 0.7490f, 0.6509f,
+			0.5f, 0.5f, 0.5f, 0.8196f, 0.7490f, 0.6509f,
+			0.5f, 0.5f, 0.5f, 0.8196f, 0.7490f, 0.6509f,
+			-0.5f, 0.5f, 0.5f, 0.8196f, 0.7490f, 0.6509f,
+			-0.5f, 0.5f, -0.5f, 0.8196f, 0.7490f, 0.6509f, //143
 	};
 
 
@@ -215,7 +305,7 @@ int main() {
 	//projection = glm::ortho(0.0f, (GLfloat)screenWidth, 0.0f, (GLfloat)screenHeight, 0.1f, 1000.0f);//Izq,Der,Fondo,Alto,Cercania,Lejania
 	while (!glfwWindowShouldClose(window))
 	{
-		
+
 		Inputs(window);
 		// Check if any events have been activiated (key pressed, mouse moved etc.) and call corresponding response functions
 		glfwPollEvents();
@@ -223,16 +313,16 @@ int main() {
 		// Render
 		// Clear the colorbuffer
 		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
 		// Draw our first triangle
 		ourShader.Use();
-		glm::mat4 model=glm::mat4(1);
-		glm::mat4 view=glm::mat4(1);
-	
+		glm::mat4 model = glm::mat4(1);
+		glm::mat4 view = glm::mat4(1);
 
-		view = glm::translate(view, glm::vec3(movX,movY, movZ));
+
+		view = glm::translate(view, glm::vec3(movX, movY, movZ));
 		view = glm::rotate(view, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
 
 		GLint modelLoc = glGetUniformLocation(ourShader.Program, "model");
@@ -243,55 +333,60 @@ int main() {
 		glUniformMatrix4fv(projecLoc, 1, GL_FALSE, glm::value_ptr(projection));
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-	
+
 
 		glBindVertexArray(VAO);
-	
-	    model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f)); //Cabeza
-		model = glm::translate(model, glm::vec3(0.0f, 3.0f, 0.0f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);
-		
+
 		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(1.5f, 1.5f, 0.75f)); //Torso
-		model = glm::translate(model, glm::vec3(0.0f, 0.3f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.85f, 0.85f, 0.5f)); //Cabeza
+		model = glm::translate(model, glm::vec3(0.0f, 1.72f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model = glm::mat4(1.0f);
+		model = glm::scale(model, glm::vec3(0.5f, 1.3f, 0.75f)); //Torso
+		model = glm::translate(model, glm::vec3(0.0f, 0.3f, 0.0f));
+		model = glm::rotate(model, 3.142f, glm::vec3(0.0f, 1.0f, 0.0f)); // use to compare orthographic and perspective projection
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 108, 144);
 
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.3f, 0.9f, 0.3f)); //Brazo Derecho
-		model = glm::translate(model, glm::vec3(3.0f, 0.7f, 0.0f));
+		model = glm::translate(model, glm::vec3(1.3f, 0.65f, 0.0f));
+		model = glm::rotate(model, 3.142f, glm::vec3(0.0f, 1.0f, 0.0f)); // use to compare orthographic and perspective projection
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		glDrawArrays(GL_TRIANGLES, 108, 144);
 
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.3f, 0.9f, 0.3f)); //Brazo Izquierdo
-		model = glm::translate(model, glm::vec3(-3.0f, 0.7f, 0.0f));
+		model = glm::translate(model, glm::vec3(-1.3f, 0.65f, 0.0f));
+		model = glm::rotate(model, 3.142f, glm::vec3(0.0f, 1.0f, 0.0f)); // use to compare orthographic and perspective projection
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		glDrawArrays(GL_TRIANGLES, 108, 144);
 
 		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.4f, 1.5f, 0.4f)); //Pierna Derecha
-		model = glm::translate(model, glm::vec3(0.75f, -0.7f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 1.0f, 0.4f)); //Pierna Derecha
+		model = glm::translate(model, glm::vec3(0.75f, -0.75f, 0.0f));
+		model = glm::rotate(model, 1.571f, glm::vec3(0.0f, -1.0f, 0.0f)); // use to compare orthographic and perspective projection
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		glDrawArrays(GL_TRIANGLES, 72, 108);
 
 		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.4f, 1.5f, 0.4f)); //Pierna Izquierda
-		model = glm::translate(model, glm::vec3(-0.75f, -0.7f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 1.0f, 0.4f)); //Pierna Izquierda
+		model = glm::translate(model, glm::vec3(-0.75f, -0.75f, 0.0f));
+		model = glm::rotate(model, 1.571f, glm::vec3(0.0f, -1.0f, 0.0f)); // use to compare orthographic and perspective projection
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		glDrawArrays(GL_TRIANGLES, 72, 108);
 
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.3f, 0.1f, 0.2f)); //Oreja Derecha
-		model = glm::translate(model, glm::vec3(1.3f, 17.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(1.8f, 17.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.3f, 0.1f, 0.2f)); //Oreja Izquierda
-		model = glm::translate(model, glm::vec3(-1.3f, 17.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-1.8f, 17.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
@@ -299,13 +394,25 @@ int main() {
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f)); //Ojo Derecho
 		model = glm::translate(model, glm::vec3(1.0f, 16.0f, 2.5f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 36, 73);
+		glDrawArrays(GL_TRIANGLES, 36, 72);
 
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f)); //Ojo Izquierdo
 		model = glm::translate(model, glm::vec3(-1.0f, 16.0f, 2.5f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 36, 73);
+
+		model = glm::mat4(1.0f);
+		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f)); //Mano Derecha
+		model = glm::translate(model, glm::vec3(1.3f, -0.05f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model = glm::mat4(1.0f);
+		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f)); //Mano Izquierda
+		model = glm::translate(model, glm::vec3(-1.3f, -0.05f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		glBindVertexArray(0);		
 
