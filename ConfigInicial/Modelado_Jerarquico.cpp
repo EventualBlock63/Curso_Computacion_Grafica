@@ -1,6 +1,6 @@
-/*Práctica 4
+/*Práctica 5
 Fernando Martínez
-20 de Febrero 2025
+26 de Febrero 2025
 318273745
 */
 
@@ -45,7 +45,7 @@ int main() {
 
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-	GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "Práctica4 Fernando", nullptr, nullptr);
+	GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "Practica5 Fernando", nullptr, nullptr);
 
 	int screenWidth, screenHeight;
 
