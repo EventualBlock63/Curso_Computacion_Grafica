@@ -263,6 +263,51 @@ int main() {
 			0.5f, 0.5f, 0.5f, 0.8196f, 0.7490f, 0.6509f,
 			-0.5f, 0.5f, 0.5f, 0.8196f, 0.7490f, 0.6509f,
 			-0.5f, 0.5f, -0.5f, 0.8196f, 0.7490f, 0.6509f, //143
+
+
+			//--------------------------------------------------------------------------------------------
+
+			-0.5f, -0.5f, 0.5f, 0.2745098039f, 0.2f, 0.0784313725f,//Front 144 ZAPATOS
+			0.5f, -0.5f, 0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			0.5f, 0.5f, 0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			0.5f, 0.5f, 0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			-0.5f, 0.5f, 0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			-0.5f, -0.5f, 0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+
+			-0.5f, -0.5f, -0.5f, 0.2745098039f, 0.2f, 0.0784313725f,//Back
+			0.5f, -0.5f, -0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			0.5f, 0.5f, -0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			0.5f, 0.5f, -0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			-0.5f, 0.5f, -0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			-0.5f, -0.5f, -0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+
+			0.5f, -0.5f, 0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			0.5f, -0.5f, -0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			0.5f, 0.5f, -0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			0.5f, 0.5f, -0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			0.5f, 0.5f, 0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			0.5f, -0.5f, 0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+
+			-0.5f, 0.5f, 0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			-0.5f, 0.5f, -0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			-0.5f, -0.5f, -0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			-0.5f, -0.5f, -0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			-0.5f, -0.5f, 0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			-0.5f, 0.5f, 0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+
+			-0.5f, -0.5f, -0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			0.5f, -0.5f, -0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			0.5f, -0.5f, 0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			0.5f, -0.5f, 0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			-0.5f, -0.5f, 0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			-0.5f, -0.5f, -0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+
+			-0.5f, 0.5f, -0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			0.5f, 0.5f, -0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			0.5f, 0.5f, 0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			0.5f, 0.5f, 0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			-0.5f, 0.5f, 0.5f, 0.2745098039f, 0.2f, 0.0784313725f,
+			-0.5f, 0.5f, -0.5f, 0.2745098039f, 0.2f, 0.0784313725f, //179
 	};
 
 
@@ -312,7 +357,7 @@ int main() {
 
 		// Render
 		// Clear the colorbuffer
-		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
@@ -346,61 +391,56 @@ int main() {
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.5f, 1.3f, 0.75f)); //Torso
 		model = glm::translate(model, glm::vec3(0.0f, 0.3f, 0.0f));
-		model = glm::rotate(model, 3.142f, glm::vec3(0.0f, 1.0f, 0.0f)); // use to compare orthographic and perspective projection
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 108, 144);
 
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.3f, 0.9f, 0.3f)); //Brazo Derecho
 		model = glm::translate(model, glm::vec3(1.3f, 0.65f, 0.0f));
-		model = glm::rotate(model, 3.142f, glm::vec3(0.0f, 1.0f, 0.0f)); // use to compare orthographic and perspective projection
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 108, 144);
 
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.3f, 0.9f, 0.3f)); //Brazo Izquierdo
 		model = glm::translate(model, glm::vec3(-1.3f, 0.65f, 0.0f));
-		model = glm::rotate(model, 3.142f, glm::vec3(0.0f, 1.0f, 0.0f)); // use to compare orthographic and perspective projection
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 108, 144);
 
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.2f, 1.0f, 0.4f)); //Pierna Derecha
 		model = glm::translate(model, glm::vec3(0.75f, -0.75f, 0.0f));
-		model = glm::rotate(model, 1.571f, glm::vec3(0.0f, -1.0f, 0.0f)); // use to compare orthographic and perspective projection
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 72, 108);
 
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.2f, 1.0f, 0.4f)); //Pierna Izquierda
 		model = glm::translate(model, glm::vec3(-0.75f, -0.75f, 0.0f));
-		model = glm::rotate(model, 1.571f, glm::vec3(0.0f, -1.0f, 0.0f)); // use to compare orthographic and perspective projection
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 72, 108);
 
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.3f, 0.1f, 0.2f)); //Oreja Derecha
-		model = glm::translate(model, glm::vec3(1.8f, 17.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(1.8f, 18.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.3f, 0.1f, 0.2f)); //Oreja Izquierda
-		model = glm::translate(model, glm::vec3(-1.8f, 17.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-1.8f, 18.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f)); //Ojo Derecho
-		model = glm::translate(model, glm::vec3(1.0f, 16.0f, 2.5f));
+		model = glm::translate(model, glm::vec3(1.4f, 16.0f, 2.5f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 36, 72);
 
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f)); //Ojo Izquierdo
-		model = glm::translate(model, glm::vec3(-1.0f, 16.0f, 2.5f));
+		model = glm::translate(model, glm::vec3(-1.4f, 16.0f, 2.5f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 36, 73);
+		glDrawArrays(GL_TRIANGLES, 36, 72);
 
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f)); //Mano Derecha
@@ -413,6 +453,31 @@ int main() {
 		model = glm::translate(model, glm::vec3(-1.3f, -0.05f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model = glm::mat4(1.0f);
+		model = glm::scale(model, glm::vec3(0.1f, 0.22f, 0.1f)); //Oido Derecho
+		model = glm::translate(model, glm::vec3(4.7f, 6.3f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		model = glm::mat4(1.0f);
+		model = glm::scale(model, glm::vec3(0.1f, 0.22f, 0.1f)); //Oido Izquierdo
+		model = glm::translate(model, glm::vec3(-4.7f, 6.3f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+
+		model = glm::mat4(1.0f);
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.5f)); //Zapato Derecha
+		model = glm::translate(model, glm::vec3(0.75f, -6.75f, 0.1f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 144, 150);
+
+		model = glm::mat4(1.0f);
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.5f)); //Zapato Izquierda
+		model = glm::translate(model, glm::vec3(-0.75f, -6.75f, 0.1f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 144, 150);
 
 		glBindVertexArray(0);		
 
