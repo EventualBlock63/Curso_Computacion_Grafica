@@ -1,0 +1,42 @@
+newmtl Anodized_Red
+Ka 0 0 0
+Ns 8.16617
+Ks 0 0 0
+Kd 0.438776 0.438776 0.438776
+map_Kd Anodized_Red.bmp
+newmtl Magnesium
+Ka 0 0 0
+Ns 8.16617
+Ks 0 0 0
+Kd 0.438776 0.438776 0.438776
+map_Kd Magnesium.bmp
+newmtl Wheel_2_Low_Res
+Ka 0 0 0
+Ns 8.16617
+Ks 0 0 0
+Kd 0.246259 0.246259 0.246259
+map_Kd Wheel_2_Low_Res.bmp
+newmtl High_Res_Rotor_B
+Ka 0 0 0
+Ns 8.16617
+Ks 1 1 1
+Kd 0.265326 0.265326 0.265326
+map_Kd High_Res_Rotor_B.bmp
+newmtl Plastics
+Ka 0 0 0
+Ns 8.16617
+Ks 1 1 1
+Kd 0.121633 0.120627 0.120627
+map_Kd Plastics.bmp
+newmtl Tire
+Ka 0 0 0
+Ns 8.16617
+Ks 0 0 0
+Kd 0.000247471 0.000247471 0.000247471
+map_Kd Tire.bmp
+newmtl Silver
+Ka 0 0 0
+Ns 8.16617
+Ks 0 0 0
+Kd 0.513039 0.513039 0.513039
+map_Kd Silver.bmp

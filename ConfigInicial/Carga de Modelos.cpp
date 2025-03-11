@@ -39,7 +39,7 @@ void DoMovement( );
 
 
 // Camera
-Camera camera( glm::vec3( 0.0f, 0.0f, 30.0f ) );//MOVER ESTOS VALORES PARA POSICIONAR LA CÁMARA DE INICIO EN OTRO PUNTO
+Camera camera( glm::vec3( 0.0f, 0.0f, 5.0f ) );//MOVER ESTOS VALORES PARA POSICIONAR LA CÁMARA DE INICIO EN OTRO PUNTO
 bool keys[1024];
 GLfloat lastX = 400, lastY = 300;
 bool firstMouse = true;
@@ -101,10 +101,12 @@ int main( )
     Shader shader( "Shader/modelLoading.vs", "Shader/modelLoading.frag" );
     
     // Load models---------------------------------------------------------------------------------------------
-    Model coin((char*)"Models/chinese_coin.obj");
+    Model dog((char*)"Models/RedDog.obj");
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
-    
-  
+    // Load models---------------------------------------------------------------------------------------------
+    Model wheel((char*)"Models/Corvette_Wheel_V2_OBJ.obj");
+    Model piston((char*)"Models/13476_Engine_Piston_v1_l1.obj");
+    Model motor((char*)"Models/13474_V6_Engine_Block_v1_l2.obj");
 
     // Game loop
     while (!glfwWindowShouldClose(window))
@@ -130,13 +132,30 @@ int main( )
 
         // Draw the loaded model
         glm::mat4 model(1);
+        glm::mat4 modelWheel(1);
+        glm::mat4 modelPiston(1);
+        glm::mat4 modelMotor(1);
+
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        coin.Draw(shader);
+        dog.Draw(shader);
         //--------------------------------------------------------------------------------------------------
-        model = glm::translate(model, glm::vec3(30.0f, 0.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        coin.Draw(shader);
+        modelWheel = glm::translate(modelWheel, glm::vec3(10.0f, 0.0f, 40.0f));
+        modelWheel = glm::scale(modelWheel, glm::vec3(0.3f, 0.3f, 0.3f));
+        //modelWheel = glm::rotate(modelWheel, 1.5f, glm::vec3(0.0f, 1.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelWheel));
+        wheel.Draw(shader);
+        //--------------------------------------------------------------------------------------------------
+        modelPiston = glm::translate(modelPiston, glm::vec3(2.5f, 0.0f, 0.0f));
+        modelPiston = glm::scale(modelPiston, glm::vec3(0.1f, 0.1f, 0.1f));
+        modelPiston = glm::rotate(modelPiston, 1.5f, glm::vec3(0.0f, 1.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelPiston));
+        piston.Draw(shader);
+        //--------------------------------------------------------------------------------------------------
+        modelMotor = glm::translate(modelMotor, glm::vec3(6.5f, 0.0f, 0.0f));
+        modelMotor = glm::scale(modelMotor, glm::vec3(0.05f, 0.05f, 0.05f));
+        modelMotor = glm::rotate(modelMotor, 1.5f, glm::vec3(-1.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelMotor));
+        motor.Draw(shader);
 
         // Swap the buffers
         glfwSwapBuffers( window );

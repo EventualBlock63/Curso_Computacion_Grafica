@@ -110,10 +110,10 @@ private:
 
 			//LINEAS COMENTADA PORQUE LOS MODELOS OBJ CARGADOS NO TIENEN VN (NORMALES) DESCOMENTAR SI EL PROGRAMA TIENE NORMALES
 			// Normals
-			/*vector.x = mesh->mNormals[i].x;
+			vector.x = mesh->mNormals[i].x;
 			vector.y = mesh->mNormals[i].y;
 			vector.z = mesh->mNormals[i].z;
-			vertex.Normal = vector;*/
+			vertex.Normal = vector;
 			//LINEAS COMENTADA PORQUE LOS MODELOS OBJ CARGADOS NO TIENEN VN (NORMALES) DESCOMENTAR SI EL PROGRAMA TIENE NORMALES
 
 			// Texture Coordinates
