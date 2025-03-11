@@ -107,6 +107,7 @@ int main( )
     Model wheel((char*)"Models/Corvette_Wheel_V2_OBJ.obj");
     Model piston((char*)"Models/13476_Engine_Piston_v1_l1.obj");
     Model motor((char*)"Models/13474_V6_Engine_Block_v1_l2.obj");
+    Model car((char*)"Models/Porsche_911_GT2_v2.obj");
 
     // Game loop
     while (!glfwWindowShouldClose(window))
@@ -135,6 +136,7 @@ int main( )
         glm::mat4 modelWheel(1);
         glm::mat4 modelPiston(1);
         glm::mat4 modelMotor(1);
+        glm::mat4 modelCarro(1);
 
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         dog.Draw(shader);
@@ -156,6 +158,12 @@ int main( )
         modelMotor = glm::rotate(modelMotor, 1.5f, glm::vec3(-1.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelMotor));
         motor.Draw(shader);
+        //--------------------------------------------------------------------------------------------------
+        modelCarro = glm::translate(modelCarro, glm::vec3(-2.0f, 0.0f, 0.0f));
+        modelCarro = glm::scale(modelCarro, glm::vec3(1.0f, 1.0f, 1.0f));
+        //modelCarro = glm::rotate(modelCarro, 1.5f, glm::vec3(-1.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelCarro));
+        car.Draw(shader);
 
         // Swap the buffers
         glfwSwapBuffers( window );
