@@ -1,6 +1,6 @@
 /*Práctica 6
 Fernando Martínez
-06 de Marzo 2025
+12 de Marzo 2025
 318273745
 */
 
