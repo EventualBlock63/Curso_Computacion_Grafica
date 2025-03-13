@@ -1,42 +1,107 @@
-newmtl Anodized_Red
-Ka 0 0 0
-Ns 8.16617
-Ks 0 0 0
-Kd 0.438776 0.438776 0.438776
-map_Kd Anodized_Red.bmp
-newmtl Magnesium
-Ka 0 0 0
-Ns 8.16617
-Ks 0 0 0
-Kd 0.438776 0.438776 0.438776
-map_Kd Magnesium.bmp
-newmtl Wheel_2_Low_Res
-Ka 0 0 0
-Ns 8.16617
-Ks 0 0 0
-Kd 0.246259 0.246259 0.246259
-map_Kd Wheel_2_Low_Res.bmp
-newmtl High_Res_Rotor_B
-Ka 0 0 0
-Ns 8.16617
-Ks 1 1 1
-Kd 0.265326 0.265326 0.265326
-map_Kd High_Res_Rotor_B.bmp
-newmtl Plastics
-Ka 0 0 0
-Ns 8.16617
-Ks 1 1 1
-Kd 0.121633 0.120627 0.120627
-map_Kd Plastics.bmp
-newmtl Tire
-Ka 0 0 0
-Ns 8.16617
-Ks 0 0 0
-Kd 0.000247471 0.000247471 0.000247471
-map_Kd Tire.bmp
-newmtl Silver
-Ka 0 0 0
-Ns 8.16617
-Ks 0 0 0
-Kd 0.513039 0.513039 0.513039
-map_Kd Silver.bmp
+# 3ds Max Wavefront OBJ Exporter v0.99 - (c)2007 guruware
+# File Created: 12.03.2025 15:01:03
+
+newmtl Corvette_Wheel_V2_OBJ_Anodized_Red
+	Kd 0.4388 0.4388 0.4388
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 0.0000 0.0000 0.0000
+	Pr 0.9183
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5000
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Anodized_Red.bmp
+
+newmtl Corvette_Wheel_V2_OBJ_Magnesium
+	Kd 0.4388 0.4388 0.4388
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 0.0000 0.0000 0.0000
+	Pr 0.9183
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5000
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Magnesium.bmp
+
+newmtl Corvette_Wheel_V2_OBJ_Wheel_2_Low_Res
+	Kd 0.2463 0.2463 0.2463
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 0.0000 0.0000 0.0000
+	Pr 0.9183
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5000
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Wheel_2_Low_Res.bmp
+
+newmtl Corvette_Wheel_V2_OBJ_High_Res_Rotor_B
+	Kd 0.2653 0.2653 0.2653
+	Ks 1.0000 1.0000 1.0000
+	Tr 0.0000
+	d 1.0000
+	Tf 0.0000 0.0000 0.0000
+	Pr 0.9183
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5000
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd High_Res_Rotor_B.bmp
+
+newmtl Corvette_Wheel_V2_OBJ_Plastics
+	Kd 0.1216 0.1206 0.1206
+	Ks 1.0000 1.0000 1.0000
+	Tr 0.0000
+	d 1.0000
+	Tf 0.0000 0.0000 0.0000
+	Pr 0.9183
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5000
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Plastics.bmp
+
+newmtl Corvette_Wheel_V2_OBJ_Tire
+	Kd 0.0002 0.0002 0.0002
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 0.0000 0.0000 0.0000
+	Pr 0.9183
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5000
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Tire.bmp
+
+newmtl Corvette_Wheel_V2_OBJ_Silver
+	Kd 0.5130 0.5130 0.5130
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 0.0000 0.0000 0.0000
+	Pr 0.9183
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5000
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd Silver.bmp

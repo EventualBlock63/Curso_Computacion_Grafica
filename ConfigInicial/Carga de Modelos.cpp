@@ -105,9 +105,9 @@ int main( )
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
     // Load models---------------------------------------------------------------------------------------------
     Model wheel((char*)"Models/Corvette_Wheel_V2_OBJ.obj");
-    Model piston((char*)"Models/13476_Engine_Piston_v1_l1.obj");
-    Model motor((char*)"Models/13474_V6_Engine_Block_v1_l2.obj");
     Model car((char*)"Models/Porsche_911_GT2_v2.obj");
+    Model carVerde((char*)"Models/Porsche_911_GT2_v3.obj");
+    Model carLAMBO((char*)"Models/Lamborghini_Aventador.obj");
     Model estacionamiento((char*)"Models/ParkingLot.obj"); 
 
     // Game loop
@@ -135,39 +135,39 @@ int main( )
         // Draw the loaded model
         glm::mat4 model(1);
         glm::mat4 modelWheel(1);
-        glm::mat4 modelPiston(1);
-        glm::mat4 modelMotor(1);
         glm::mat4 modelCarro(1);
+        glm::mat4 modelCarroVerde(1);
+        glm::mat4 modelCarroLAMBO(1);
         glm::mat4 modelPark(1);
 
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         dog.Draw(shader);
         //--------------------------------------------------------------------------------------------------
-        modelWheel = glm::translate(modelWheel, glm::vec3(10.0f, 0.0f, 40.0f));
-        modelWheel = glm::scale(modelWheel, glm::vec3(0.3f, 0.3f, 0.3f));
-        //modelWheel = glm::rotate(modelWheel, 1.5f, glm::vec3(0.0f, 1.0f, 0.0f));
+        modelWheel = glm::translate(modelWheel, glm::vec3(0.75f, -0.6f, 1.0f));
+        modelWheel = glm::scale(modelWheel, glm::vec3(0.05f, 0.05f, 0.05f));
+        modelWheel = glm::rotate(modelWheel, 1.5f, glm::vec3(0.0f, 1.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelWheel));
         wheel.Draw(shader);
         //--------------------------------------------------------------------------------------------------
-        modelPiston = glm::translate(modelPiston, glm::vec3(2.5f, 0.0f, 0.0f));
-        modelPiston = glm::scale(modelPiston, glm::vec3(0.1f, 0.1f, 0.1f));
-        modelPiston = glm::rotate(modelPiston, 1.5f, glm::vec3(0.0f, 1.0f, 0.0f));
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelPiston));
-        piston.Draw(shader);
-        //--------------------------------------------------------------------------------------------------
-        modelMotor = glm::translate(modelMotor, glm::vec3(6.5f, 0.0f, 0.0f));
-        modelMotor = glm::scale(modelMotor, glm::vec3(0.05f, 0.05f, 0.05f));
-        modelMotor = glm::rotate(modelMotor, 1.5f, glm::vec3(-1.0f, 0.0f, 0.0f));
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelMotor));
-        motor.Draw(shader);
-        //--------------------------------------------------------------------------------------------------
-        modelCarro = glm::translate(modelCarro, glm::vec3(-2.0f, 0.0f, 0.0f));
-        modelCarro = glm::scale(modelCarro, glm::vec3(1.0f, 1.0f, 1.0f));
+        modelCarro = glm::translate(modelCarro, glm::vec3(-2.3f, -0.15f, 0.6f));
+        modelCarro = glm::scale(modelCarro, glm::vec3(0.75f, 0.75f, 0.75f));
         //modelCarro = glm::rotate(modelCarro, 1.5f, glm::vec3(-1.0f, 0.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelCarro));
         car.Draw(shader);
         //--------------------------------------------------------------------------------------------------
-        modelPark = glm::translate(modelPark, glm::vec3(-15.0f, -0.7f, 0.0f));
+        modelCarroVerde = glm::translate(modelCarroVerde, glm::vec3(5.1f, -0.15f, 1.4f));
+        modelCarroVerde = glm::scale(modelCarroVerde, glm::vec3(0.75f, 0.75f, 0.75f));
+        //modelCarroVerde = glm::rotate(modelCarroVerde, 1.5f, glm::vec3(-1.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelCarroVerde));
+        carVerde.Draw(shader);
+        //--------------------------------------------------------------------------------------------------
+        modelCarroLAMBO = glm::translate(modelCarroLAMBO, glm::vec3(-5.3f, -0.6f, 0.6f));
+        modelCarroLAMBO = glm::scale(modelCarroLAMBO, glm::vec3(0.6f, 0.6f, 0.6f));
+        //modelCarro = glm::rotate(modelCarro, 1.5f, glm::vec3(-1.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelCarroLAMBO));
+        carLAMBO.Draw(shader);
+        //--------------------------------------------------------------------------------------------------
+        modelPark = glm::translate(modelPark, glm::vec3(-15.0f, -0.65f, -3.0f));
         modelPark = glm::scale(modelPark, glm::vec3(0.5f, 0.5f, 0.5f));
         modelPark = glm::rotate(modelPark, 1.5f, glm::vec3(0.0f, 1.0f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelPark));
