@@ -14,6 +14,6 @@ void main()
 {
     gl_Position = projection * view *  model * vec4(position, 1.0f);
     Color=inColor;
-    TexCoord=inTexCoord; //SIN TRANSPARENCIA
-    //TexCoord=vec2(inTexCoord.x, inTexCoord.y); CON TRANSPARENCIA
+    //TexCoord=inTexCoord; SIN TRANSPARENCIA
+    TexCoord=vec2(inTexCoord.x, inTexCoord.y); //CON TRANSPARENCIA
 }

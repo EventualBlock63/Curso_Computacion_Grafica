@@ -1,6 +1,6 @@
 /*Práctica 7
 Fernando Martínez
-16 de Marzo 2025
+19 de Marzo 2025
 318273745
 */
 
@@ -63,7 +63,7 @@ int main()
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
 	// Create a GLFWwindow object that we can use for GLFW's functions
-	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Texturizado", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Practica7 Fernando_Martinez", nullptr, nullptr);
 
 	if (nullptr == window)
 	{
@@ -106,20 +106,63 @@ int main()
 	// Set up vertex data (and buffer(s)) and attribute pointers
 	GLfloat vertices[] =
 	{
+		//Cara trasera
 		// Positions            // Colors              // Texture Coords
-		-0.5f, -0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,0.0f,	// Esquina inferior izquierda
-		0.5f, -0.5f, 0.0f,	   1.0f, 1.0f,1.0f,		1.0f,0.0f,	// Esquina inferior derecha
-		0.5f,  0.5f, 0.0f,     1.0f, 1.0f,1.0f,	    1.0f,1.0f,	// Esquina superior derecha
-		-0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,1.0f,	// Esquina superior izquierda
+		0.5f, -0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,0.0f,	// Esquina inferior izquierda 0
+		-0.5f, -0.5f, 0.0f,	   1.0f, 1.0f,1.0f,		1.0f,0.0f,	// Esquina inferior derecha 1
+		-0.5f,  0.5f, 0.0f,     1.0f, 1.0f,1.0f,	    1.0f,1.0f,	// Esquina superior derecha 2
+		0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,1.0f,	// Esquina superior izquierda 3
 
-		
+		//Cara frontal
+		// Positions            // Colors              // Texture Coords
+		-0.5f, -0.5f, 1.0f,    1.0f, 1.0f,1.0f,		0.2643f,0.37f,	// Esquina inferior izquierda 4
+		0.5f, -0.5f, 1.0f,	   1.0f, 1.0f,1.0f,		0.4976f,0.37f,	// Esquina inferior derecha 5
+		0.5f,  0.5f, 1.0f,     1.0f, 1.0f,1.0f,	    0.4976f,0.66f,	// Esquina superior derecha 6
+		-0.5f,  0.5f, 1.0f,    1.0f, 1.0f,1.0f,		0.2643f,0.66f,	// Esquina superior izquierda 7
+
+		//Cara lateral izquierda
+		// Positions            // Colors              // Texture Coords
+		-0.5f, -0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,0.0f,	// Esquina inferior izquierda 8
+		-0.5f, -0.5f, 1.0f,	   1.0f, 1.0f,1.0f,		1.0f,0.0f,	// Esquina inferior derecha 9
+		-0.5f,  0.5f, 1.0f,    1.0f, 1.0f,1.0f,		1.0f,1.0f,	// Esquina superior derecha 10
+		-0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,1.0f,	// Esquina superior izquierda 11
+
+		//Cara lateral derecha
+		// Positions            // Colors              // Texture Coords
+		0.5f, -0.5f, 1.0f,    1.0f, 1.0f,1.0f,		0.0f,0.0f,	// Esquina inferior izquierda 12
+		0.5f, -0.5f, 0.0f,	   1.0f, 1.0f,1.0f,		1.0f,0.0f,	// Esquina inferior derecha 13
+		0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		1.0f,1.0f,	// Esquina superior derecha 14
+		0.5f,  0.5f, 1.0f,    1.0f, 1.0f,1.0f,		0.0f,1.0f,	// Esquina superior izquierda 15
+
+		//Cara superior
+		// Positions            // Colors              // Texture Coords
+		-0.5f,  0.5f, 1.0f,    1.0f, 1.0f,1.0f,		0.0f,0.0f,	// Esquina inferior izquierda 12
+		0.5f,  0.5f, 1.0f,	   1.0f, 1.0f,1.0f,		1.0f,0.0f,	// Esquina inferior derecha 13
+		0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		1.0f,1.0f,	// Esquina superior derecha 14
+		-0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,1.0f,	// Esquina superior izquierda 15
+
+		//Cara inferior
+		// Positions            // Colors              // Texture Coords
+		-0.5f,  -0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,0.0f,	// Esquina inferior izquierda 16
+		0.5f,  -0.5f, 0.0f,	   1.0f, 1.0f,1.0f,		1.0f,0.0f,	// Esquina inferior derecha 17
+		0.5f,  -0.5f, 1.0f,    1.0f, 1.0f,1.0f,		1.0f,1.0f,	// Esquina superior derecha 18
+		-0.5f,  -0.5f, 1.0f,    1.0f, 1.0f,1.0f,		0.0f,1.0f,	// Esquina superior izquierda 19
 	};
 
 	GLuint indices[] =
 	{  // Note that we start from 0!
 		0,1,3,
-		1,2,3
-	
+		1,2,3,
+		4,5,7,
+		5,6,7,
+		8,9,11,
+		9,10,11,
+		12,13,15,
+		13,14,15,
+		16,17,19,
+		17,18,19,
+		20,21,23,
+		21,22,23
 	};
 
 	// First, set the container's VAO (and VBO)
@@ -145,7 +188,6 @@ int main()
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid *)(6 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(2);
 	glBindVertexArray(0);
-
 	// Load textures
 	GLuint texture1;
 	glGenTextures(1, &texture1);
@@ -158,7 +200,7 @@ int main()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
 	// Diffuse map
-	image = stbi_load("images/Pasto.png", &textureWidth, &textureHeight, &nrChannels,0);
+	image = stbi_load("images/MesaCrafteo.png", &textureWidth, &textureHeight, &nrChannels,0);
 	glBindTexture(GL_TEXTURE_2D, texture1);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, textureWidth, textureHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, image); //USAR GL_RGB SI LA TEXTURA NO TIENE TRANSPARENCIA, SI USA TRANSPARENCIA, CAMBIAR A GL_RGBA
 	glGenerateMipmap(GL_TEXTURE_2D);
@@ -211,9 +253,34 @@ int main()
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		// Draw the light object (using light's vertex attributes)
+		// Dibujar los primeros dos triángulos (del conjunto 0, 1, 2, 3)
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		glBindVertexArray(0);
+
+		// Dibujar los nuevos dos triángulos (del conjunto 4, 5, 6, 7)
+		glBindVertexArray(VAO);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, (GLvoid*)(6 * sizeof(GLuint)));
+		glBindVertexArray(0);
+
+		// Dibujar los nuevos dos triángulos (del conjunto 8, 9, 10, 11)
+		glBindVertexArray(VAO);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, (GLvoid*)(12 * sizeof(GLuint)));
+		glBindVertexArray(0);
+
+		// Dibujar los nuevos dos triángulos (del conjunto 12, 13, 14, 15)
+		glBindVertexArray(VAO);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, (GLvoid*)(18 * sizeof(GLuint)));
+		glBindVertexArray(0);
+
+		// Dibujar los nuevos dos triángulos (del conjunto 12, 13, 14, 15)
+		glBindVertexArray(VAO);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, (GLvoid*)(24 * sizeof(GLuint)));
+		glBindVertexArray(0);
+
+		// Dibujar los nuevos dos triángulos (del conjunto 12, 13, 14, 15)
+		glBindVertexArray(VAO);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, (GLvoid*)(30 * sizeof(GLuint)));
 		glBindVertexArray(0);
 
 		// Swap the screen buffers
