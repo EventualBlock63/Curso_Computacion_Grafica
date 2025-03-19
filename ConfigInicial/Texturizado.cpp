@@ -108,45 +108,45 @@ int main()
 	{
 		//Cara trasera
 		// Positions            // Colors              // Texture Coords
-		0.5f, -0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,0.0f,	// Esquina inferior izquierda 0
-		-0.5f, -0.5f, 0.0f,	   1.0f, 1.0f,1.0f,		1.0f,0.0f,	// Esquina inferior derecha 1
-		-0.5f,  0.5f, 0.0f,     1.0f, 1.0f,1.0f,	    1.0f,1.0f,	// Esquina superior derecha 2
-		0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,1.0f,	// Esquina superior izquierda 3
+		0.5f, -0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.7309f,0.36f,	// Esquina inferior izquierda 0
+		-0.5f, -0.5f, 0.0f,	  1.0f, 1.0f,1.0f,		0.9620f,0.36f,	// Esquina inferior derecha 1
+		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f,1.0f,		0.9620f,0.655f,	// Esquina superior derecha 2
+		0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.7309f,0.655f,	// Esquina superior izquierda 3
 
 		//Cara frontal
 		// Positions            // Colors              // Texture Coords
-		-0.5f, -0.5f, 1.0f,    1.0f, 1.0f,1.0f,		0.2643f,0.37f,	// Esquina inferior izquierda 4
-		0.5f, -0.5f, 1.0f,	   1.0f, 1.0f,1.0f,		0.4976f,0.37f,	// Esquina inferior derecha 5
-		0.5f,  0.5f, 1.0f,     1.0f, 1.0f,1.0f,	    0.4976f,0.66f,	// Esquina superior derecha 6
-		-0.5f,  0.5f, 1.0f,    1.0f, 1.0f,1.0f,		0.2643f,0.66f,	// Esquina superior izquierda 7
+		-0.5f, -0.5f, 1.0f,    1.0f, 1.0f,1.0f,		0.2643f,0.36f,	// Esquina inferior izquierda 4
+		0.5f, -0.5f, 1.0f,	   1.0f, 1.0f,1.0f,		0.4976f,0.36f,	// Esquina inferior derecha 5
+		0.5f,  0.5f, 1.0f,     1.0f, 1.0f,1.0f,	    0.4976f,0.655f,	// Esquina superior derecha 6
+		-0.5f,  0.5f, 1.0f,    1.0f, 1.0f,1.0f,		0.2643f,0.655f,	// Esquina superior izquierda 7
 
 		//Cara lateral izquierda
 		// Positions            // Colors              // Texture Coords
-		-0.5f, -0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,0.0f,	// Esquina inferior izquierda 8
-		-0.5f, -0.5f, 1.0f,	   1.0f, 1.0f,1.0f,		1.0f,0.0f,	// Esquina inferior derecha 9
-		-0.5f,  0.5f, 1.0f,    1.0f, 1.0f,1.0f,		1.0f,1.0f,	// Esquina superior derecha 10
-		-0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,1.0f,	// Esquina superior izquierda 11
+		-0.5f, -0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.035f,0.36f,	// Esquina inferior izquierda 8
+		-0.5f, -0.5f, 1.0f,	   1.0f, 1.0f,1.0f,		0.2643f,0.36f,	// Esquina inferior derecha 9
+		-0.5f,  0.5f, 1.0f,    1.0f, 1.0f,1.0f,		0.2643f,0.655f,	// Esquina superior derecha 10
+		-0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.035f,0.655f,	// Esquina superior izquierda 11
 
 		//Cara lateral derecha
 		// Positions            // Colors              // Texture Coords
-		0.5f, -0.5f, 1.0f,    1.0f, 1.0f,1.0f,		0.0f,0.0f,	// Esquina inferior izquierda 12
-		0.5f, -0.5f, 0.0f,	   1.0f, 1.0f,1.0f,		1.0f,0.0f,	// Esquina inferior derecha 13
-		0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		1.0f,1.0f,	// Esquina superior derecha 14
-		0.5f,  0.5f, 1.0f,    1.0f, 1.0f,1.0f,		0.0f,1.0f,	// Esquina superior izquierda 15
+		0.5f, -0.5f, 1.0f,    1.0f, 1.0f,1.0f,		0.4976f,0.36f,	// Esquina inferior izquierda 12
+		0.5f, -0.5f, 0.0f,	  1.0f, 1.0f,1.0f,		0.7309f,0.36f,	// Esquina inferior derecha 13
+		0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.7309f,0.655f,	// Esquina superior derecha 14
+		0.5f,  0.5f, 1.0f,    1.0f, 1.0f,1.0f,		0.4976f,0.655f,	// Esquina superior izquierda 15
 
 		//Cara superior
 		// Positions            // Colors              // Texture Coords
-		-0.5f,  0.5f, 1.0f,    1.0f, 1.0f,1.0f,		0.0f,0.0f,	// Esquina inferior izquierda 12
-		0.5f,  0.5f, 1.0f,	   1.0f, 1.0f,1.0f,		1.0f,0.0f,	// Esquina inferior derecha 13
-		0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		1.0f,1.0f,	// Esquina superior derecha 14
-		-0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,1.0f,	// Esquina superior izquierda 15
+		-0.5f,  0.5f, 1.0f,    1.0f, 1.0f,1.0f,		0.2653f,0.655f,	// Esquina inferior izquierda 12
+		0.5f,  0.5f, 1.0f,	   1.0f, 1.0f,1.0f,		0.4967f,0.655f,	// Esquina inferior derecha 13
+		0.5f,  0.5f, 0.0f,     1.0f, 1.0f,1.0f,		0.4967f,0.952f,	// Esquina superior derecha 14
+		-0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.2653f,0.952f,	// Esquina superior izquierda 15
 
 		//Cara inferior
 		// Positions            // Colors              // Texture Coords
-		-0.5f,  -0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,0.0f,	// Esquina inferior izquierda 16
-		0.5f,  -0.5f, 0.0f,	   1.0f, 1.0f,1.0f,		1.0f,0.0f,	// Esquina inferior derecha 17
-		0.5f,  -0.5f, 1.0f,    1.0f, 1.0f,1.0f,		1.0f,1.0f,	// Esquina superior derecha 18
-		-0.5f,  -0.5f, 1.0f,    1.0f, 1.0f,1.0f,		0.0f,1.0f,	// Esquina superior izquierda 19
+		-0.5f,  -0.5f, 0.0f,   1.0f, 1.0f,1.0f,		0.2653f,0.056f,	// Esquina inferior izquierda 16
+		0.5f,  -0.5f, 0.0f,	   1.0f, 1.0f,1.0f,		0.4967f,0.056f,	// Esquina inferior derecha 17
+		0.5f,  -0.5f, 1.0f,    1.0f, 1.0f,1.0f,		0.4967f,0.36f,	// Esquina superior derecha 18
+		-0.5f,  -0.5f, 1.0f,   1.0f, 1.0f,1.0f,		0.2653f,0.36f,	// Esquina superior izquierda 19
 	};
 
 	GLuint indices[] =
