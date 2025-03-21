@@ -109,6 +109,7 @@ int main()
 
     // Load models
     Model red_dog((char*)"Models/RedDog.obj");
+    Model coin((char*)"Models/chinese_coin.obj");
     glm::mat4 projection = glm::perspective(camera.GetZoom(), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 100.0f);
 
     float vertices[] = {
@@ -177,6 +178,7 @@ int main()
     int textureWidth, textureHeight, nrChannels;
     stbi_set_flip_vertically_on_load(true);
     unsigned char* image;
+    unsigned char* image2;
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
@@ -195,6 +197,20 @@ int main()
         std::cout << "Failed to load texture" << std::endl;
     }
     stbi_image_free(image);
+
+    image2 = stbi_load("Models/chinese_coin_0.jpg", &textureWidth, &textureHeight, &nrChannels, 0);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, textureWidth, textureHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, image2);
+    glGenerateMipmap(GL_TEXTURE_2D);
+    if (image2)
+    {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, textureWidth, textureHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, image2);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+    else
+    {
+        std::cout << "Failed to load texture" << std::endl;
+    }
+    stbi_image_free(image2);
 
 
     // Game loop
@@ -234,10 +250,10 @@ int main()
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
 
         // Set material properties
-		glUniform3f(glGetUniformLocation(lightingShader.Program, "material.ambient"), 0.5f, 0.5f, 0.5f);
-		glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 0.7f, 0.2f, 0.4f);
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "material.ambient"), 0.7f, 0.7f, 0.7f);
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 1.0f, 1.0f, 1.0f);
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.6f, 0.6f, 0.6f);
-		glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.6f);
+		glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 1.0f);
 
 
 
@@ -247,6 +263,13 @@ int main()
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
 		red_dog.Draw(lightingShader);
+
+        glm::mat4 modelCoin(1);
+        modelCoin = glm::scale(modelCoin, glm::vec3(0.05f, 0.05f, 0.05f));
+        modelCoin = glm::translate(modelCoin, glm::vec3(40.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelCoin));
+        glBindVertexArray(VAO);
+		coin.Draw(lightingShader);
         //glDrawArrays(GL_TRIANGLES, 0, 36);
         
 
@@ -261,6 +284,17 @@ int main()
         model = glm::mat4(1.0f);
         model = glm::translate(model, lightPos + movelightPos);
         model = glm::scale(model, glm::vec3(0.3f));
+        glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+        glBindVertexArray(0);
+
+        lampshader.Use();
+        glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+        glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, lightPos + (movelightPos * 2));
+        model = glm::scale(model, glm::vec3(0.7f));
         glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 36);
