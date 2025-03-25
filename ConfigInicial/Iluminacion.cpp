@@ -1,6 +1,6 @@
 /*Práctica 8
 Fernando Martínez
-21 de Marzo 2025
+24 de Marzo 2025
 318273745
 */
 
@@ -238,9 +238,14 @@ int main()
 
 
         // Set lights properties
-		glUniform3f(glGetUniformLocation(lightingShader.Program, "light.ambient"), 0.3f, 0.3f, 0.3f);
-		glUniform3f(glGetUniformLocation(lightingShader.Program, "light.diffuse"), 0.2f, 0.7f, 0.8f);
-		glUniform3f(glGetUniformLocation(lightingShader.Program, "light.specular"), 0.3f, 0.6f, 0.4f);
+        for (int i = 0; i < 2; i++) {
+            std::string number = std::to_string(i);
+            glUniform3f(glGetUniformLocation(lightingShader.Program, ("lights[" + number + "].position").c_str()), lightPos.x + movelightPos * (i + 1), lightPos.y + movelightPos * (i + 1), lightPos.z + movelightPos * (i + 1));
+            glUniform3f(glGetUniformLocation(lightingShader.Program, ("lights[" + number + "].ambient").c_str()), 0.3f, 0.3f, 0.3f);
+            glUniform3f(glGetUniformLocation(lightingShader.Program, ("lights[" + number + "].diffuse").c_str()), 0.2f, 0.7f, 0.8f);
+            glUniform3f(glGetUniformLocation(lightingShader.Program, ("lights[" + number + "].specular").c_str()), 0.3f, 0.6f, 0.4f);
+        }
+
 
 
 
