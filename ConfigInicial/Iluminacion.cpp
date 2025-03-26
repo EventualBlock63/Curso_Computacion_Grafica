@@ -1,6 +1,6 @@
 /*Práctica 8
 Fernando Martínez
-24 de Marzo 2025
+26 de Marzo 2025
 318273745
 */
 
@@ -28,7 +28,7 @@ Fernando Martínez
 #include "SOIL2/SOIL2.h"
 #include "stb_image.h"
 // Properties
-const GLuint WIDTH = 800, HEIGHT = 600;
+const GLuint WIDTH = 1280, HEIGHT = 800;
 int SCREEN_WIDTH, SCREEN_HEIGHT;
 
 // Function prototypes
@@ -38,15 +38,19 @@ void DoMovement();
 
 
 // Camera
-Camera camera(glm::vec3(0.0f, 0.0f, 0.0f));
+Camera camera(glm::vec3(0.0f, 0.0f, 5.0f));
 bool keys[1024];
 GLfloat lastX = 400, lastY = 300;
 bool firstMouse = true;
 
 
 // Light attributes
-glm::vec3 lightPos(0.5f, 0.5f, 2.5f);
+glm::vec3 lightPos(0.5f, 0.5f, 0.0f);
+glm::vec3 secondLightPos(0.8f, 0.8f, 0.0f);
 float movelightPos = 0.0f;
+float movelightPos2 = 0.0f;
+float reloj = 0.0f;
+float activador = 0.0f;
 GLfloat deltaTime = 0.0f;
 GLfloat lastFrame = 0.0f;
 float rot = 0.0f;
@@ -108,8 +112,14 @@ int main()
 
 
     // Load models
-    Model red_dog((char*)"Models/RedDog.obj");
-    Model coin((char*)"Models/chinese_coin.obj");
+    Model dog((char*)"Models/RedDog.obj");
+    Model wheel((char*)"Models/Corvette_Wheel_V2_OBJ.obj");
+    Model car((char*)"Models/Porsche_911_GT2_v2.obj");
+    Model carVerde((char*)"Models/Porsche_911_GT2_v3.obj");
+    Model carLAMBO((char*)"Models/Lamborghini_Aventador.obj");
+    Model estacionamiento((char*)"Models/ParkingLot.obj");
+    Model sol((char*)"Models/Sol.obj");
+    Model luna((char*)"Models/Luna.obj");
     glm::mat4 projection = glm::perspective(camera.GetZoom(), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 100.0f);
 
     float vertices[] = {
@@ -184,7 +194,7 @@ int main()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
 
-    image = stbi_load("Models/Texture_albedo.jpg", &textureWidth, &textureHeight, &nrChannels, 0);
+    /*image = stbi_load("Models/Texture_albedo.jpg", &textureWidth, &textureHeight, &nrChannels, 0);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, textureWidth, textureHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
     glGenerateMipmap(GL_TEXTURE_2D);
     if (image)
@@ -196,21 +206,7 @@ int main()
     {
         std::cout << "Failed to load texture" << std::endl;
     }
-    stbi_image_free(image);
-
-    image2 = stbi_load("Models/chinese_coin_0.jpg", &textureWidth, &textureHeight, &nrChannels, 0);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, textureWidth, textureHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, image2);
-    glGenerateMipmap(GL_TEXTURE_2D);
-    if (image2)
-    {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, textureWidth, textureHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, image2);
-        glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-    {
-        std::cout << "Failed to load texture" << std::endl;
-    }
-    stbi_image_free(image2);
+    stbi_image_free(image);*/
 
 
     // Game loop
@@ -231,50 +227,103 @@ int main()
 
         
         lightingShader.Use();
+
+        
+
+        // Sol: se mueve de izquierda a derecha en parábola
+        lightPos.x = cos(reloj) * 10.0f;
+        lightPos.y = sin(reloj) * 10.0f;
+
+        // Luna: misma trayectoria, pero opuesta
+        secondLightPos.x = -cos(reloj) * 10.0f;
+        secondLightPos.y = -sin(reloj) * 10.0f;
+
+
         GLint lightPosLoc = glGetUniformLocation(lightingShader.Program, "light.position");
         GLint viewPosLoc = glGetUniformLocation(lightingShader.Program, "viewPos");
         glUniform3f(lightPosLoc, lightPos.x + movelightPos, lightPos.y + movelightPos, lightPos.z + movelightPos);
         glUniform3f(viewPosLoc, camera.GetPosition().x, camera.GetPosition().y, camera.GetPosition().z);
 
+        glUniform3f(glGetUniformLocation(lightingShader.Program, "light2.position"),secondLightPos.x, secondLightPos.y, secondLightPos.z);
 
         // Set lights properties
-        for (int i = 0; i < 2; i++) {
-            std::string number = std::to_string(i);
-            glUniform3f(glGetUniformLocation(lightingShader.Program, ("lights[" + number + "].position").c_str()), lightPos.x + movelightPos * (i + 1), lightPos.y + movelightPos * (i + 1), lightPos.z + movelightPos * (i + 1));
-            glUniform3f(glGetUniformLocation(lightingShader.Program, ("lights[" + number + "].ambient").c_str()), 0.3f, 0.3f, 0.3f);
-            glUniform3f(glGetUniformLocation(lightingShader.Program, ("lights[" + number + "].diffuse").c_str()), 0.2f, 0.7f, 0.8f);
-            glUniform3f(glGetUniformLocation(lightingShader.Program, ("lights[" + number + "].specular").c_str()), 0.3f, 0.6f, 0.4f);
+        if (reloj < 3.1 && reloj > 0 && activador == 1) {
+            glUniform3f(glGetUniformLocation(lightingShader.Program, "light.ambient"), 10.0f, 5.0f, 2.0f);
+            glUniform3f(glGetUniformLocation(lightingShader.Program, "light.diffuse"), 0.2f, 0.7f, 0.4f);
+            glUniform3f(glGetUniformLocation(lightingShader.Program, "light.specular"), 0.3f, 0.6f, 0.4f);
         }
-
-
-
-
+        else {
+            glUniform3f(glGetUniformLocation(lightingShader.Program, "light.ambient"), 1.5f, 1.5f, 2.0f);
+            glUniform3f(glGetUniformLocation(lightingShader.Program, "light.diffuse"), 0.1f, 1.05f, 1.1f);
+            glUniform3f(glGetUniformLocation(lightingShader.Program, "light.specular"), 0.4f, 0.9f, 1.0f);
+        }
 
         glm::mat4 view = camera.GetViewMatrix();
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
 
+  //      // Segunda luz
+  //      GLint light2PosLoc = glGetUniformLocation(lightingShader.Program, "light2.position");
+  //      glUniform3f(light2PosLoc, secondLightPos.x, secondLightPos.y, secondLightPos.z);
+		//if (reloj > -1.6 && reloj < 0) {
+		//	glUniform3f(glGetUniformLocation(lightingShader.Program, "light2.ambient"), 1.0f, 1.0f, 1.0f);
+		//	glUniform3f(glGetUniformLocation(lightingShader.Program, "light2.diffuse"), 0.2f, 0.7f, 0.4f);
+		//	glUniform3f(glGetUniformLocation(lightingShader.Program, "light2.specular"), 0.3f, 0.6f, 0.4f);
+		//}
+  //      else {
+  //          glUniform3f(glGetUniformLocation(lightingShader.Program, "light2.ambient"), 0.0f, 0.0f, 0.0f);
+  //          glUniform3f(glGetUniformLocation(lightingShader.Program, "light2.diffuse"), 0.0f, 0.0f, 0.0f);
+  //          glUniform3f(glGetUniformLocation(lightingShader.Program, "light2.specular"), 0.0f, 0.0f, 0.0f);
+  //      }
+
         // Set material properties
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "material.ambient"), 0.7f, 0.7f, 0.7f);
-		glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 1.0f, 1.0f, 1.0f);
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 0.7f, 0.7f, 0.7f);
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 0.6f, 0.6f, 0.6f);
-		glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 1.0f);
-
-
+		glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 0.6f);
 
         // Draw the loaded model
         glm::mat4 model(1);
-        model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+        model = glm::translate(model, glm::vec3(0.0f, -0.25f, 0.0f));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glBindVertexArray(VAO);
-		red_dog.Draw(lightingShader);
+		dog.Draw(lightingShader);
+        //--------------------------------------------------------------------------------------------------
+        glm::mat4 modelWheel(1);
+        modelWheel = glm::translate(modelWheel, glm::vec3(0.75f, -0.6f, 1.0f));
+        modelWheel = glm::scale(modelWheel, glm::vec3(0.05f, 0.05f, 0.05f));
+        modelWheel = glm::rotate(modelWheel, 1.5f, glm::vec3(0.0f, 1.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelWheel));
+        wheel.Draw(lightingShader);
+        //--------------------------------------------------------------------------------------------------
+        glm::mat4 modelCarro(1);
+        modelCarro = glm::translate(modelCarro, glm::vec3(-2.3f, -0.15f, 0.6f));
+        modelCarro = glm::scale(modelCarro, glm::vec3(0.75f, 0.75f, 0.75f));
+        //modelCarro = glm::rotate(modelCarro, 1.5f, glm::vec3(-1.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelCarro));
+        car.Draw(lightingShader);
+        //--------------------------------------------------------------------------------------------------
+        glm::mat4 modelCarroVerde(1);
+        modelCarroVerde = glm::translate(modelCarroVerde, glm::vec3(5.1f, -0.15f, 1.4f));
+        modelCarroVerde = glm::scale(modelCarroVerde, glm::vec3(0.75f, 0.75f, 0.75f));
+        //modelCarroVerde = glm::rotate(modelCarroVerde, 1.5f, glm::vec3(-1.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelCarroVerde));
+        carVerde.Draw(lightingShader);
+        //--------------------------------------------------------------------------------------------------
+        glm::mat4 modelCarroLAMBO(1);
+        modelCarroLAMBO = glm::translate(modelCarroLAMBO, glm::vec3(-5.3f, -0.6f, 0.6f));
+        modelCarroLAMBO = glm::scale(modelCarroLAMBO, glm::vec3(0.6f, 0.6f, 0.6f));
+        //modelCarro = glm::rotate(modelCarro, 1.5f, glm::vec3(-1.0f, 0.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelCarroLAMBO));
+        carLAMBO.Draw(lightingShader);
+        //--------------------------------------------------------------------------------------------------
+        glm::mat4 modelPark(1);
+        modelPark = glm::translate(modelPark, glm::vec3(-15.0f, -0.65f, -3.0f));
+        modelPark = glm::scale(modelPark, glm::vec3(0.5f, 0.5f, 0.5f));
+        modelPark = glm::rotate(modelPark, 1.5f, glm::vec3(0.0f, 1.0f, 0.0f));
+        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelPark));
+        estacionamiento.Draw(lightingShader);
 
-        glm::mat4 modelCoin(1);
-        modelCoin = glm::scale(modelCoin, glm::vec3(0.05f, 0.05f, 0.05f));
-        modelCoin = glm::translate(modelCoin, glm::vec3(40.0f, 0.0f, 0.0f));
-        glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelCoin));
-        glBindVertexArray(VAO);
-		coin.Draw(lightingShader);
         //glDrawArrays(GL_TRIANGLES, 0, 36);
         
 
@@ -286,23 +335,23 @@ int main()
         lampshader.Use();
         glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
         glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, lightPos + movelightPos);
-        model = glm::scale(model, glm::vec3(0.3f));
-        glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
-        glBindVertexArray(0);
-
-        lampshader.Use();
-        glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
-        glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, lightPos + (movelightPos * 2));
-        model = glm::scale(model, glm::vec3(0.7f));
-        glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        
+        if(activador == 1){
+        // Dibujar el sol (Lampara 1)
+            model = glm::mat4(1.0f);
+            model = glm::translate(model, lightPos + movelightPos);
+            model = glm::scale(model, glm::vec3(0.8f));
+            glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+		    sol.Draw(lampshader);
+		}
+        else {
+            // Dibujar el luna (Lampara 1)
+            model = glm::mat4(1.0f);
+            model = glm::translate(model, lightPos + movelightPos);
+            model = glm::scale(model, glm::vec3(0.1f));
+            glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+            luna.Draw(lampshader);
+        }
         glBindVertexArray(0);
 
         // Swap the buffers
@@ -369,19 +418,17 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
         }
     }
 
-    if (keys[GLFW_KEY_O])
+    if (reloj < 3 && (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS))
     {
-       
-        movelightPos += 0.1f;
+		activador = 1.0f;
+        reloj += 0.1f;
     }
 
-    if (keys[GLFW_KEY_L])
+    if (reloj > 0 && (glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS))
     {
-        
-        movelightPos -= 0.1f;
+		activador = 0.0f;
+        reloj -= 0.1f;
     }
-
-
 }
 
 void MouseCallback(GLFWwindow* window, double xPos, double yPos)
