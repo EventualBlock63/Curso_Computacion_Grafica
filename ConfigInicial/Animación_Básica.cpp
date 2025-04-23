@@ -48,6 +48,10 @@ bool keys[1024];
 bool firstMouse = true;
 // Light attributes
 glm::vec3 lightPos(0.0f, 0.0f, 0.0f);
+float reloj = 0.0f;
+float reloj2 = 0.0f;
+float PelotaPosY = 0.0f;
+float PerroPosY = 0.0f;
 bool active;
 int x = 0;
 
@@ -108,6 +112,7 @@ float vertices[] = {
 glm::vec3 Light1 = glm::vec3(0);
 //Anim
 float rotBall = 0;
+float rotDog = 0;
 bool AnimBall = false;
 
 
@@ -210,12 +215,13 @@ int main()
 		// Clear the colorbuffer
 		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	   
+
 		// OpenGL options
 		glEnable(GL_DEPTH_TEST);
 
-		
-		
+
+		PelotaPosY = cos(reloj) * 1.0f;
+		PerroPosY = cos(reloj2) * 1.0f;
 		
 	
 
@@ -293,6 +299,9 @@ int main()
 		Piso.Draw(lightingShader);
 
 		model = glm::mat4(1);
+		model = glm::translate(model, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(0.0f, -PerroPosY, 0.0f));
+		model = glm::rotate(model, glm::radians(rotDog), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1i(glGetUniformLocation(lightingShader.Program, "transparency"), 0);
 		Dog.Draw(lightingShader);
@@ -302,8 +311,9 @@ int main()
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1i(glGetUniformLocation(lightingShader.Program, "transparency"), 1);
-		model = glm::translate(model, glm::vec3(0.0f, rotBall, 0.0f));
-		//model = glm::rotate(model, glm::radians(rotBall), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(0.0f, 3.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(0.0f, PelotaPosY, 0.0f));
+		model = glm::rotate(model, glm::radians(rotBall), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 	    Ball.Draw(lightingShader); 
 		glDisable(GL_BLEND);  //Desactiva el canal alfa 
@@ -450,36 +460,54 @@ void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 		
 	}
 }
+
 void Animation() {
 	if (AnimBall)
 	{
-		if (x != 2)
-		{	
-			rotBall += 0.02f; //VALOR LENTO PARA APRECIAR MEJOR EL MOVIMIENTO = 0.002f
-			//printf("ARRIBA%f ", rotBall);
-			if (rotBall > 1.44f && x != 2)
-			{
-				rotBall = 1.44f;
-				x = 2;
-			}
-		}
-		else if (x==2)
-		{
-			rotBall -= 0.02; //VALOR LENTO PARA APRECIAR MEJOR EL MOVIMIENTO = 0.002f
-			//printf("ABAJO%f ", rotBall);
-			if (rotBall < 0 && x == 2)
-			{
-				rotBall = 0.0f;
-				x = 0;
-			}
-		}
-		
+		rotBall += 1.0f;
+		rotDog += 1.0f;
+		reloj += 0.018f;
+		reloj2 += 0.018f;
+		printf("Rotate %f ", rotBall);
+		printf("Translate PEL %f ", PelotaPosY);
+		printf("Translate PERR %f ", PerroPosY);
 	}
 	else
 	{
 		//rotBall = 0.0f;
 	}
 }
+
+//void Animation() {
+//	if (AnimBall)
+//	{
+//		if (x != 2)
+//		{	
+//			rotBall += 0.02f; //VALOR LENTO PARA APRECIAR MEJOR EL MOVIMIENTO = 0.002f
+//			//printf("ARRIBA%f ", rotBall);
+//			if (rotBall > 1.44f && x != 2)
+//			{
+//				rotBall = 1.44f;
+//				x = 2;
+//			}
+//		}
+//		else if (x==2)
+//		{
+//			rotBall -= 0.02; //VALOR LENTO PARA APRECIAR MEJOR EL MOVIMIENTO = 0.002f
+//			//printf("ABAJO%f ", rotBall);
+//			if (rotBall < 0 && x == 2)
+//			{
+//				rotBall = 0.0f;
+//				x = 0;
+//			}
+//		}
+//		
+//	}
+//	else
+//	{
+//		//rotBall = 0.0f;
+//	}
+//}
 
 void MouseCallback(GLFWwindow *window, double xPos, double yPos)
 {
